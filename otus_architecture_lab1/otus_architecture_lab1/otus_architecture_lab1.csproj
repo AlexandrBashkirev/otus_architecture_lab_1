@@ -43,14 +43,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICommand.cs" />
+    <Compile Include="ICommandExecutor.cs" />
     <Compile Include="IMatrixReader.cs" />
     <Compile Include="IMatrixWriter.cs" />
+    <Compile Include="Matrix.cs" />
     <Compile Include="MatrixElementComputerCmd.cs" />
     <Compile Include="MatrixReaderTextFile.cs" />
     <Compile Include="MatrixWriterTextFile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MatrixMult.cs" />
+    <Compile Include="SimpleServiceLocator.cs" />
+    <Compile Include="ThreadCommandExecutor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -23,7 +23,7 @@ namespace otus_architecture_lab1
             this.matrixA = matrixA;
             this.matrixB = matrixB;
 
-            result = new Matrix();
+            result = new Matrix(matrixA.SizeI, matrixB.SizeJ);
         }
 
         #endregion
