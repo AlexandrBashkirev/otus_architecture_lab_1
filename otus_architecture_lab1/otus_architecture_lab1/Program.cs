@@ -12,15 +12,15 @@ namespace otus_architecture_lab1
         {
             SimpleServiceLocator.Instance.RegisterService<ICommandExecutor>(new ThreadCommandExecutor());
 
-            Matrix matrixA = new MatrixReaderTextFile().Read();
-            Matrix matrixB = new MatrixReaderTextFile().Read();
+            Matrix matrixA = new MatrixReaderTextFile("matrixA").Read();
+            Matrix matrixB = new MatrixReaderTextFile("matrixB").Read();
 
 
             MatrixMult matrixMult = new MatrixMult(matrixA, matrixB);
 
             await matrixMult.Solve();
 
-            new MatrixWriterTextFile().Write(matrixMult.Result);
+            new MatrixWriterTextFile("matrixC").Write(matrixMult.Result);
         }
     }
 }

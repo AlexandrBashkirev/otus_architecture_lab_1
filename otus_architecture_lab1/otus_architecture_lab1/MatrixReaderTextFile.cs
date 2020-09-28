@@ -26,7 +26,7 @@ namespace otus_architecture_lab1
 
         public Matrix Read()
         {
-            return new Matrix();
+            return new Matrix(1,1);
         }
 
         #endregion
