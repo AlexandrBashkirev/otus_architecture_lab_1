@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 
@@ -20,10 +21,15 @@ namespace otus_architecture_lab1
 
         public MatrixMult(Matrix matrixA, Matrix matrixB)
         {
+            if(matrixA.Columns != matrixB.Rows)
+            {
+                throw new Exception("Can't multiplay matrix");
+            }
+
             this.matrixA = matrixA;
             this.matrixB = matrixB;
 
-            result = new Matrix(matrixA.SizeI, matrixB.SizeJ);
+            result = new Matrix(matrixA.Rows, matrixB.Columns);
         }
 
         #endregion
@@ -50,7 +56,20 @@ namespace otus_architecture_lab1
 
         public async Task Solve()
         {
-            await Task.Delay(3000);
+            SimpleServiceLocator.Instance.GetService<ICommandExecutor>().Execute(MultiplayCommands());
+            await Task.Delay(1);
+        }
+
+
+        private IEnumerable<ICommand> MultiplayCommands()
+        {
+            for(int row = 0; row < result.Rows; row ++)
+            {
+                for (int column = 0; column < result.Columns; column++)
+                {
+                    yield return new MatrixElementComputerCmd(matrixA, matrixB, result,  row, column);
+                }
+            }
         }
 
         #endregion

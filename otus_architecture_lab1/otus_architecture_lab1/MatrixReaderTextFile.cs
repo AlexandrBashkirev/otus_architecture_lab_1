@@ -8,6 +8,7 @@ namespace otus_architecture_lab1
     {
         #region Variables
 
+        private static char[] deviders = new char[] { ';' };
         private string path;
 
         #endregion
@@ -37,13 +38,13 @@ namespace otus_architecture_lab1
             using (StreamReader file = File.OpenText(path))
             {
                 int row = 0;
-                if(!Int32.TryParse(file.ReadLine(), out row))
+                if(!Int32.TryParse(file.ReadLine().Split(deviders)[0], out row))
                 {
                     throw new Exception($"Cant parce matrix from file: {path}");
                 }
 
                 int column = 0;
-                if (!Int32.TryParse(file.ReadLine(), out column))
+                if (!Int32.TryParse(file.ReadLine().Split(deviders)[0], out column))
                 {
                     throw new Exception($"Cant parce matrix from file: {path}");
                 }
@@ -54,7 +55,7 @@ namespace otus_architecture_lab1
                 while (!file.EndOfStream)
                 {
                     string line = file.ReadLine();
-                    string [] rowValues = line.Split(new char[] { ',' });
+                    string [] rowValues = line.Split(deviders);
 
                     int j = 0;
                     foreach(string valueStr in rowValues)

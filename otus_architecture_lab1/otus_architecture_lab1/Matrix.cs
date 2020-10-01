@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace otus_architecture_lab1
 {
@@ -18,33 +15,33 @@ namespace otus_architecture_lab1
 
         #region Properties
 
-        public float this[int i, int j]
+        public float this[int row, int column]
         {
             set
             {
-                if(IsInexesOutOfBound(i, j))
+                if(IsInexesOutOfBound(row, column))
                 {
                     throw new Exception("Index out of bound");
                 }
 
-                values[i, j] = value;
+                values[row, column] = value;
             }
 
             get
             {
-                if (IsInexesOutOfBound(i, j))
+                if (IsInexesOutOfBound(row, column))
                 {
                     throw new Exception("Index out of bound");
                 }
 
-                return values[i, j];
+                return values[row, column];
             }
         }
 
 
-        public int SizeI { get; set; }
+        public int Rows { get; set; }
 
-        public int SizeJ { get; set; }
+        public int Columns { get; set; }
 
         
 
@@ -54,16 +51,16 @@ namespace otus_architecture_lab1
 
         #region Class lifecicle
 
-        public Matrix(int sizeI, int sizeJ)
+        public Matrix(int rows, int columns)
         {
-            SizeI = sizeI;
-            SizeJ = sizeJ;
+            Rows = rows;
+            Columns = columns;
 
-            values = new float[sizeI, sizeJ];
+            values = new float[Rows, Columns];
         }
 
 
-        public bool IsInexesOutOfBound(int i, int j) => i >= SizeI || i < 0 || j >= SizeJ || j < 0;
+        public bool IsInexesOutOfBound(int i, int j) => i >= Rows || i < 0 || j >= Columns || j < 0;
 
         #endregion
     }

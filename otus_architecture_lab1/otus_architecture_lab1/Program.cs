@@ -14,20 +14,20 @@ namespace otus_architecture_lab1
 
         static void ConfigureApp()
         {
-            SimpleServiceLocator.Instance.RegisterService<ICommandExecutor>(new ThreadCommandExecutor());
+            SimpleServiceLocator.Instance.RegisterService<ICommandExecutor>(new SequenceCommandExecutor());
         }
 
 
         static async Task RunApp()
         {
-            Matrix matrixA = new MatrixReaderTextFile("matrixA").Read();
-            Matrix matrixB = new MatrixReaderTextFile("matrixB").Read();
+            Matrix matrixA = new MatrixReaderTextFile("matrixA.txt").Read();
+            Matrix matrixB = new MatrixReaderTextFile("matrixB.txt").Read();
 
             MatrixMult matrixMult = new MatrixMult(matrixA, matrixB);
 
             await matrixMult.Solve();
 
-            new MatrixWriterTextFile("matrixC").Write(matrixMult.Result);
+            new MatrixWriterTextFile("matrixC.txt").Write(matrixMult.Result);
         }
     }
 }
