@@ -44,8 +44,10 @@
   <ItemGroup>
     <Compile Include="AsyncCommand.cs" />
     <Compile Include="CommandBase.cs" />
+    <Compile Include="FileLogger.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="ICommandExecutor.cs" />
+    <Compile Include="ILogger.cs" />
     <Compile Include="IMatrixReader.cs" />
     <Compile Include="IMatrixWriter.cs" />
     <Compile Include="Matrix.cs" />

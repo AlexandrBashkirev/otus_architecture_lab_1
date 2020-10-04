@@ -17,6 +17,7 @@ namespace otus_architecture_lab1
 
         static void ConfigureApp()
         {
+            SimpleServiceLocator.Instance.RegisterService<ILogger>(new FileLogger("log.txt"));
             SimpleServiceLocator.Instance.RegisterService<ICommandExecutor>(new ThreadCommandExecutor());
         }
 

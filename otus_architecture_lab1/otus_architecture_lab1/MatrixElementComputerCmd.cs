@@ -1,4 +1,6 @@
-﻿namespace otus_architecture_lab1
+﻿using System.Threading;
+
+namespace otus_architecture_lab1
 {
     class MatrixElementComputeCmd : CommandBase
     {
@@ -38,6 +40,9 @@
             {
                 resultValue += matrixA[row, i] * matrixB[i, column];
             }
+
+            SimpleServiceLocator.Instance.GetService<ILogger>()
+                .Log($"Element [{row},{column}] computed in thread {Thread.CurrentThread.Name}");
 
             callback?.Invoke(true, resultValue);
         }

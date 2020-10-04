@@ -85,6 +85,8 @@ namespace otus_architecture_lab1
             for (int i = 0; i < Math.Min(commands.Count, threads.Count); i++)
             {
                 threads[i].Interrupt();
+                SimpleServiceLocator.Instance.GetService<ILogger>()
+                    .Log($"Tread runned {threads[i].Name}");
             }
         }
 
@@ -102,6 +104,8 @@ namespace otus_architecture_lab1
                     }
                     else
                     {
+                        SimpleServiceLocator.Instance.GetService<ILogger>()
+                            .Log($"Tread {Thread.CurrentThread.Name} go to sleep");
                         Thread.Sleep(Timeout.Infinite);
                     }
                 }
