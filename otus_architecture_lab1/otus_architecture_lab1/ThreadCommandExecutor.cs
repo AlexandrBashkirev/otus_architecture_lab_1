@@ -84,9 +84,12 @@ namespace otus_architecture_lab1
         {
             for (int i = 0; i < Math.Min(commands.Count, threads.Count); i++)
             {
-                threads[i].Interrupt();
-                SimpleServiceLocator.Instance.GetService<ILogger>()
-                    .Log($"Tread runned {threads[i].Name}");
+                if (threads[i].ThreadState == ThreadState.WaitSleepJoin)
+                {
+                    threads[i].Interrupt();
+                    SimpleServiceLocator.Instance.GetService<ILogger>()
+                        .Log($"Tread runned {threads[i].Name}");
+                } 
             }
         }
 

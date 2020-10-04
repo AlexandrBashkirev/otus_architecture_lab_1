@@ -29,7 +29,7 @@ namespace otus_architecture_lab1
 
             MatrixMult matrixMult = new MatrixMult(matrixA, matrixB);
 
-            matrixMult.Run();
+            SimpleServiceLocator.Instance.GetService<ICommandExecutor>().Execute(matrixMult);
 
             await matrixMult.Wait();
 
