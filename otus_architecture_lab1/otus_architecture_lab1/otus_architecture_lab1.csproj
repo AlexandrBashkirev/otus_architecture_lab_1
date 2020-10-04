@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsyncCommand.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="ICommandExecutor.cs" />
     <Compile Include="IMatrixReader.cs" />

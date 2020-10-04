@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace otus_architecture_lab1
 {
-    class MatrixMult
+    class MatrixMult : AsyncCommand
     {
         #region Variables
 
@@ -38,8 +38,6 @@ namespace otus_architecture_lab1
 
         #region Properties
 
-        public bool IsDone { get; private set; }
-
         public Matrix Result => result;
 
         #endregion
@@ -48,26 +46,35 @@ namespace otus_architecture_lab1
 
         #region Methods
 
-        public void Initialize()
-        {
-
-        }
-
-
-        public async Task Solve()
+        public override void Run()
         {
             SimpleServiceLocator.Instance.GetService<ICommandExecutor>().Execute(MultiplayCommands());
-            await Task.Delay(1);
         }
 
 
         private IEnumerable<ICommand> MultiplayCommands()
         {
-            for(int row = 0; row < result.Rows; row ++)
+            int cmdCount = result.Rows * result.Columns;
+
+            for (int row = 0; row < result.Rows; row ++)
             {
                 for (int column = 0; column < result.Columns; column++)
                 {
-                    yield return new MatrixElementComputerCmd(matrixA, matrixB, result,  row, column);
+                    ICommand cmd = new MatrixElementComputerCmd(matrixA, matrixB, row, column);
+
+                    cmd.SetResultCallback((isSuccess, value) =>
+                    {
+                        result[row, column] = (float)value;
+                        cmdCount--;
+
+                        if(cmdCount == 0)
+                        {
+                            IsDone = true;
+                            callback?.Invoke(true, result);
+                        }
+                    });
+
+                    yield return cmd;
                 }
             }
         }

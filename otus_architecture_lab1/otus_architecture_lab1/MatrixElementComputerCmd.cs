@@ -1,14 +1,16 @@
-﻿
+﻿using System;
+
+
 namespace otus_architecture_lab1
 {
     class MatrixElementComputerCmd : ICommand
     {
         #region Variables
 
+        Action<bool, object> callback = null;
+
         Matrix matrixA;
         Matrix matrixB;
-
-        Matrix result;
 
         int row, column;
 
@@ -18,18 +20,25 @@ namespace otus_architecture_lab1
 
         #region Class lifecycle
 
-        public MatrixElementComputerCmd(Matrix matrixA, Matrix matrixB, Matrix result, int row, int column)
+        public MatrixElementComputerCmd(Matrix matrixA, Matrix matrixB, int row, int column)
         {
             this.matrixA = matrixA;
             this.matrixB = matrixB;
-
-            this.result = result;
 
             this.row = row;
             this.column = column;
         }
 
         #endregion
+
+
+
+        #region Methods
+
+        public void SetResultCallback(Action<bool, object> callback)
+        {
+            this.callback = callback;
+        }
 
 
         public void Run()
@@ -41,7 +50,9 @@ namespace otus_architecture_lab1
                 resultValue += matrixA[row, i] * matrixB[i, column];
             }
 
-            result[row, column] = resultValue;
+            callback?.Invoke(true, resultValue);
         }
+
+        #endregion
     }
 }

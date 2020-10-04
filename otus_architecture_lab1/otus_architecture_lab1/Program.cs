@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 
+
 namespace otus_architecture_lab1
 {
     class Program
@@ -25,7 +26,9 @@ namespace otus_architecture_lab1
 
             MatrixMult matrixMult = new MatrixMult(matrixA, matrixB);
 
-            await matrixMult.Solve();
+            matrixMult.Run();
+
+            await matrixMult.Wait();
 
             new MatrixWriterTextFile("matrixC.txt").Write(matrixMult.Result);
         }
