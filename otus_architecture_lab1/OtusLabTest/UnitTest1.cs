@@ -40,7 +40,7 @@ namespace OtusLabTest
         [TestMethod]
         public void MullMatrixTest()
         {
-            // TODO it's like integration test but not unit test, becouse we have to initialize singletones
+            // TODO it's like integration test but not unit test, because we have to initialize singletones
             // it's should fixed
             SimpleServiceLocator.Instance.RegisterService<ILogger>(new LoggerMock());
             SimpleServiceLocator.Instance.RegisterService<ICommandExecutor>(new SequenceCommandExecutor());
