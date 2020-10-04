@@ -4,7 +4,7 @@ using System.IO;
 
 namespace otus_architecture_lab1
 {
-    class MatrixReaderTextFile : IMatrixReader
+    public class MatrixReaderTextFile : IMatrixReader
     {
         #region Variables
 

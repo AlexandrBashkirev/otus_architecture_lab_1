@@ -3,7 +3,7 @@
 
 namespace otus_architecture_lab1
 {
-    interface ILogger : IDisposable
+    public interface ILogger : IDisposable
     {
         void Log(string message);
     }

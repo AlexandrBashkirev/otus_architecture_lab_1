@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace otus_architecture_lab1
 {
-    class SimpleServiceLocator : IDisposable
+    public class SimpleServiceLocator : IDisposable
     {
         #region Variables
 

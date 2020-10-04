@@ -3,7 +3,7 @@
 
 namespace otus_architecture_lab1
 {
-    class SequenceCommandExecutor : ICommandExecutor
+    public class SequenceCommandExecutor : ICommandExecutor
     {
         public void Dispose()
         {
