@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 
 namespace otus_architecture_lab1
 {
-    class MatrixMult : AsyncCommand
+    public class MatrixMultCommand : AsyncCommand
     {
         #region Variables
 
@@ -19,7 +18,7 @@ namespace otus_architecture_lab1
 
         #region Class lifecycle
 
-        public MatrixMult(Matrix matrixA, Matrix matrixB)
+        public MatrixMultCommand(Matrix matrixA, Matrix matrixB)
         {
             if(matrixA.Columns != matrixB.Rows)
             {
@@ -31,14 +30,6 @@ namespace otus_architecture_lab1
 
             result = new Matrix(matrixA.Rows, matrixB.Columns);
         }
-
-        #endregion
-
-
-
-        #region Properties
-
-        public Matrix Result => result;
 
         #endregion
 

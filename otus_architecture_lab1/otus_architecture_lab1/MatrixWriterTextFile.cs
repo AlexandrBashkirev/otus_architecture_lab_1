@@ -1,11 +1,9 @@
-﻿
+﻿using System.IO;
 
-using System;
-using System.IO;
 
 namespace otus_architecture_lab1
 {
-    class MatrixWriterTextFile : IMatrixWriter
+    public class MatrixWriterTextFile : IMatrixWriter
     {
         #region Variables
 

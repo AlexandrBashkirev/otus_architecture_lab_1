@@ -27,13 +27,14 @@ namespace otus_architecture_lab1
             Matrix matrixA = new MatrixReaderTextFile("matrixA.txt").Read();
             Matrix matrixB = new MatrixReaderTextFile("matrixB.txt").Read();
 
-            MatrixMult matrixMult = new MatrixMult(matrixA, matrixB);
-
+            MatrixMultCommand matrixMult = new MatrixMultCommand(matrixA, matrixB);
+            matrixMult.SetResultCallback((isSuccess, result) =>
+            {
+                new MatrixWriterTextFile("matrixC.txt").Write(result as Matrix);
+            });
             SimpleServiceLocator.Instance.GetService<ICommandExecutor>().Execute(matrixMult);
 
             await matrixMult.Wait();
-
-            new MatrixWriterTextFile("matrixC.txt").Write(matrixMult.Result);
         }
     }
 }

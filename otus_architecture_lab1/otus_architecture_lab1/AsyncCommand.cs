@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace otus_architecture_lab1
 {
-    abstract class AsyncCommand : CommandBase
+    public abstract class AsyncCommand : CommandBase
     {
         #region Properties
 

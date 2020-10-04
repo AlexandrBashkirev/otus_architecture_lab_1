@@ -1,7 +1,7 @@
 ﻿
 namespace otus_architecture_lab1
 {
-    interface IMatrixWriter
+    public interface IMatrixWriter
     {
         void Write(Matrix matrix);
     }

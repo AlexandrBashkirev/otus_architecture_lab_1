@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "otus_architecture_lab1", "otus_architecture_lab1\otus_architecture_lab1.csproj", "{6252F54E-E6BB-4AB1-AA9F-4CF74FAD82CF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OtusLabTest", "OtusLabTest\OtusLabTest.csproj", "{40341E9E-A61C-427A-85B2-256BBEEAF3F7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6252F54E-E6BB-4AB1-AA9F-4CF74FAD82CF} = {6252F54E-E6BB-4AB1-AA9F-4CF74FAD82CF}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

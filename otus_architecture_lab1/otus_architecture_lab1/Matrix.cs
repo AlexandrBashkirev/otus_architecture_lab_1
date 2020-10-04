@@ -3,7 +3,7 @@
 
 namespace otus_architecture_lab1
 {
-    class Matrix
+    public class Matrix
     {
         #region Variables
 

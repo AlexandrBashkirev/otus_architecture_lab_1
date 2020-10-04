@@ -3,7 +3,7 @@
 
 namespace otus_architecture_lab1
 {
-    abstract class CommandBase : ICommand
+    public abstract class CommandBase : ICommand
     {
         #region Variables
 
