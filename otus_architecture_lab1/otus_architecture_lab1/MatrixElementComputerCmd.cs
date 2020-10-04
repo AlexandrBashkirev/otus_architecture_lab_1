@@ -1,13 +1,8 @@
-﻿using System;
-
-
-namespace otus_architecture_lab1
+﻿namespace otus_architecture_lab1
 {
-    class MatrixElementComputerCmd : ICommand
+    class MatrixElementComputeCmd : CommandBase
     {
         #region Variables
-
-        Action<bool, object> callback = null;
 
         Matrix matrixA;
         Matrix matrixB;
@@ -20,7 +15,7 @@ namespace otus_architecture_lab1
 
         #region Class lifecycle
 
-        public MatrixElementComputerCmd(Matrix matrixA, Matrix matrixB, int row, int column)
+        public MatrixElementComputeCmd(Matrix matrixA, Matrix matrixB, int row, int column)
         {
             this.matrixA = matrixA;
             this.matrixB = matrixB;
@@ -35,13 +30,7 @@ namespace otus_architecture_lab1
 
         #region Methods
 
-        public void SetResultCallback(Action<bool, object> callback)
-        {
-            this.callback = callback;
-        }
-
-
-        public void Run()
+        public override void Run()
         {
             float resultValue = 0.0f;
 

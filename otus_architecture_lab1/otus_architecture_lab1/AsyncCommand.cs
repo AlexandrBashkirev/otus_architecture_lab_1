@@ -4,16 +4,8 @@ using System.Threading.Tasks;
 
 namespace otus_architecture_lab1
 {
-    abstract class AsyncCommand : ICommand
+    abstract class AsyncCommand : CommandBase
     {
-        #region Variables
-
-        protected Action<bool, object> callback = null;
-
-        #endregion
-
-
-
         #region Properties
 
         public bool IsDone
@@ -27,15 +19,6 @@ namespace otus_architecture_lab1
 
 
         #region Methods
-
-        public abstract void Run();
-
-
-        public void SetResultCallback(Action<bool, object> callback)
-        {
-            this.callback = callback;
-        }
-
 
         public async Task Wait(int frequency = 25, int timeout = -1)
         {

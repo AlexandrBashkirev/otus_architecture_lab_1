@@ -60,7 +60,7 @@ namespace otus_architecture_lab1
             {
                 for (int column = 0; column < result.Columns; column++)
                 {
-                    ICommand cmd = new MatrixElementComputerCmd(matrixA, matrixB, row, column);
+                    ICommand cmd = new MatrixElementComputeCmd(matrixA, matrixB, row, column);
 
                     cmd.SetResultCallback((isSuccess, value) =>
                     {

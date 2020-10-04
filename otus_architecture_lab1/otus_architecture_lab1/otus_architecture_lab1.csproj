@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AsyncCommand.cs" />
+    <Compile Include="CommandBase.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="ICommandExecutor.cs" />
     <Compile Include="IMatrixReader.cs" />
