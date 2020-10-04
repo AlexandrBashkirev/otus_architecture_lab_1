@@ -5,6 +5,12 @@ namespace otus_architecture_lab1
 {
     class SequenceCommandExecutor : ICommandExecutor
     {
+        public void Dispose()
+        {
+
+        }
+
+
         public void Execute(ICommand cmd)
         {
             cmd.Run();

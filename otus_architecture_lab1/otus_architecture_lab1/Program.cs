@@ -10,12 +10,14 @@ namespace otus_architecture_lab1
             ConfigureApp();
 
             RunApp().GetAwaiter().GetResult();
+
+            SimpleServiceLocator.Instance.Dispose();
         }
 
 
         static void ConfigureApp()
         {
-            SimpleServiceLocator.Instance.RegisterService<ICommandExecutor>(new SequenceCommandExecutor());
+            SimpleServiceLocator.Instance.RegisterService<ICommandExecutor>(new ThreadCommandExecutor());
         }
 
 

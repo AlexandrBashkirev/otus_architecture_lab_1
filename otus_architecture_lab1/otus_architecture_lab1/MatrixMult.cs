@@ -55,17 +55,23 @@ namespace otus_architecture_lab1
         private IEnumerable<ICommand> MultiplayCommands()
         {
             int cmdCount = result.Rows * result.Columns;
+            object lockObj = new object();
 
             for (int row = 0; row < result.Rows; row ++)
             {
                 for (int column = 0; column < result.Columns; column++)
                 {
                     ICommand cmd = new MatrixElementComputeCmd(matrixA, matrixB, row, column);
+                    int _row = row;
+                    int _column = column;
 
                     cmd.SetResultCallback((isSuccess, value) =>
                     {
-                        result[row, column] = (float)value;
-                        cmdCount--;
+                        result[_row, _column] = (float)value;
+                        lock (lockObj)
+                        {
+                            cmdCount--;
+                        }
 
                         if(cmdCount == 0)
                         {
